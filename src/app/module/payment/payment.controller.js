@@ -76,10 +76,29 @@ const updateAPayment = catchAsyncFunction(async (req, res) => {
   }
 });
 
+const getAllPayment = catchAsyncFunction(async (req, res) => {
+  try {
+    const result = await PaymentServices.getAllPayment(
+      req.query.search || "",
+      req.query.page || 1,
+      req.query.limit || 10
+    );
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Payment fetched successfully",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 const PaymentController = {
   createPayment,
   getAsinglePayment,
   deleteAPayment,
   updateAPayment,
+  getAllPayment,
 };
 export default PaymentController;

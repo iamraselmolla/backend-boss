@@ -47,12 +47,6 @@ const paymentSchema = new mongoose.Schema(
         type: Number,
         required: true,
       },
-      status: {
-        type: String,
-        trim: true,
-        required: true,
-        enum: ["Pending", "Completed", "Failed"],
-      },
       installment: {
         type: Number,
         required: true,
