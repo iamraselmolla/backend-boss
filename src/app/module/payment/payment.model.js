@@ -5,31 +5,34 @@ const paymentSchema = new mongoose.Schema(
     userInfo: {
       name: {
         type: String,
-        required: true,
+        trim: true,
       },
       email: {
         type: String,
-        required: true,
+        // required: true,
+        trim: true,
         match: [/\S+@\S+\.\S+/, "Invalid email format"],
       },
       phone: {
         type: String,
         required: true,
+        trim: true,
         // match: [/^01[3-9]\d{8}$/, "Invalid Bangladeshi phone number"],
       },
     },
     courseInfo: {
       courseName: {
         type: String,
-        required: true,
+        trim: true,
       },
       batch: {
         type: String,
         required: true,
+        trim: true,
       },
       courseFee: {
         type: Number,
-        required: true,
+        // required: true,
       },
     },
     paymentInfo: {
@@ -38,6 +41,7 @@ const paymentSchema = new mongoose.Schema(
         required: true,
         enum: ["Bkash", "Rocket", "Nagad", "Bank Transfer"],
         default: "Bkash",
+        trim: true,
       },
       amount: {
         type: Number,
@@ -45,6 +49,7 @@ const paymentSchema = new mongoose.Schema(
       },
       status: {
         type: String,
+        trim: true,
         required: true,
         enum: ["Pending", "Completed", "Failed"],
       },
@@ -60,6 +65,7 @@ const paymentSchema = new mongoose.Schema(
         type: String,
         required: true,
         unique: true,
+        trim: true,
       },
       receipt: {
         type: String,
