@@ -10,4 +10,6 @@ PaymentRouter.get("/:id", PaymentController.getAsinglePayment);
 
 PaymentRouter.delete("/:id", PaymentController.deleteAPayment);
 
+PaymentRouter.patch("/:id", PaymentController.updateAPayment);
+
 export default PaymentRouter;

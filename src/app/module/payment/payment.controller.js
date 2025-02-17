@@ -52,5 +52,34 @@ const deleteAPayment = catchAsyncFunction(async (req, res) => {
   }
 });
 
-const PaymentController = { createPayment, getAsinglePayment, deleteAPayment };
+const updateAPayment = catchAsyncFunction(async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return sendResponse(res, {
+        statusCode: httpStatus.BAD_REQUEST,
+        success: false,
+        message: "Invalid payment id",
+      });
+    }
+    const result = await PaymentServices.updateAPayment(
+      req.params.id,
+      req.body
+    );
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Payment updated successfully",
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+const PaymentController = {
+  createPayment,
+  getAsinglePayment,
+  deleteAPayment,
+  updateAPayment,
+};
 export default PaymentController;
