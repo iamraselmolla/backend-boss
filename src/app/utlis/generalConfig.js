@@ -9,9 +9,6 @@ const env = process.env.NODE_ENV;
 const configs = {
   databaseUrl,
   port,
-  twilioSid,
-  twilioAuthToken,
-  twilioPhone,
   env,
 };
 
